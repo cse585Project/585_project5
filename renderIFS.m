@@ -10,7 +10,7 @@ Imax = 0;
 I = zeros(L,M);
 
 num = 10000000;
-P = [0.2,0.35,0.35,0.1];
+P = [0,0.35,0.35,0.3];
 
 % init x,y
 x = 0;
@@ -26,8 +26,8 @@ for i=1:num
     end
     [x,y] = w(x,y,k);
     if (xmin <= x) && (x <= xmax) && (ymin <= y) && (y <= ymax)
-        l = round(L * (x-xmin) / (xmax-xmin))+1;
-        m = round(M * (y-ymin) / (ymax-ymin))+1;
+        l = floor(L * (x-xmin) / (xmax-xmin))+1;
+        m = floor(M * (y-ymin) / (ymax-ymin))+1;
         I(l,m) = I(l,m) + 1;
         Imax = max(Imax, I(l,m));
     end
